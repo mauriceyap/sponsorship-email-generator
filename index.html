@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <title>MySociety Sponsorship Email Generator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/generator.js"></script>
+    <script src="js/clipboard.min.js"></script>
+</head>
+
+<body ng-app="emailGenerator" ng-controller="emailGeneratorCtrl">
+    <div class="jumbotron text-center">
+        <h1>MySociety Sponsorship Email Generator</h1>
+        <p>By <a href="https://www.linkedin.com/in/mauriceyap/">Maurice Yap</a></p>
+    </div>
+    <div class="container">
+        <p class="text-center text-info">
+            Instructions: hopefully, it's self-explanatory.
+        </p>
+        <div class="row">
+            <div class="col-md-6">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-5" for="yourName">Your first name:</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" id="yourName" placeholder="e.g. Maurice" ng-model="yourName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-5" for="yourPos">Your 2017/18 position:</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" id="yourPos" placeholder="e.g. President" ng-model="yourPos">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-5" for="company">Their company name:</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" id="company" placeholder="e.g. Bank of Money" ng-model="company">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-5" for="theirName">Their first name:</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" id="theirName" placeholder="e.g. Dave" ng-model="theirName">
+                        </div>
+                    </div>
+
+                    <!-- Radio buttons to select the sector of the company to say something like "we're great for companies like yours, because our course does this..." - this may or may not be useful for you
+                    <div class="form-group">
+                        <div class="col-sm-5">
+                            <label class="control-label" for="companyType">Is the company primarily looking for...</label>
+                        </div>
+                        <div class="col-sm-7 radio">
+                            <label><input type="radio" name="companyType" value="software" ng-model="companyType"> software engineers of <em>any</em> description?
+                                <br />(e.g. MassiveSoftwareCompany, BigSocialNetwork)</label>
+                            <label><input type="radio" name="companyType" value="engineering" ng-model="companyType"> engineers?
+                                <br />(e.g. StrongAndStableBuildingFirm)</label>
+                            <label><input type="radio" name="companyType" value="consultancy" ng-model="companyType"> (management) consultants?
+                                <br />(e.g. McCenture)</label>
+                            <label><input type="radio" name="companyType" value="other" ng-model="companyType"> other?
+                                <br />(e.g. SupermarketWithReallyNiceGradScheme)</label>
+                        </div>
+                    </div> -->
+
+                </form>
+            </div>
+            <div class="col-md-6">
+                <div class="bg-warning" ng-show="!essentialsFilled()">
+                    <p>You need to fill in all the fields on the left (or above, if you're on a phone) to generate the email</p>
+                </div>
+                <div class="col-sm-6" ng-show="essentialsFilled()">
+                    <label class="control-label" for="copy">Copy text to clipboard:</label><br />
+                    <button class="btn btn-success" data-clipboard-target="#message" id="copy">Copy!</button>
+                </div>
+
+                <div class="col-sm-6" ng-show="essentialsFilled()">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="email">Their email:</label>
+                            <input type="email" class="form-control" id="email" placeholder="e.g. dave@bankofmoney.com" ng-model="email">
+
+                            <div ng-show="emailFilled()">
+                            <div class="alert alert-warning">
+                                <strong>Stop! Wait!</strong> Make sure you attach your proposal to the email!
+                            </div>
+                                <a href="mailto:{{email}}?Subject=Imperial%20College%20MySociety%20Sponsorship&Body={{getEmailMessageBody()}}" class="btn btn-info" role="button">Email them!</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                &nbsp;
+                <div ng-show="essentialsFilled()">
+                    <textarea readonly id="message" class="col-sm-12">{{getMessage()}}</textarea>
+                    <br/>&nbsp;
+                    <br/>
+                </br/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Javascript to make the copy button to work -->
+    <script>
+        $('textarea').each(function() {
+            this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+        }).on('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+        });
+
+        var btn = document.getElementById('copy');
+        var clipboard = new Clipboard(btn);
+        clipboard.on('success', function(e) {
+            console.log(e);
+        });
+        clipboard.on('error', function(e) {
+            console.log(e);
+        });
+    </script>
+
+</body>
+
+</html>
