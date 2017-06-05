@@ -56,7 +56,14 @@ string += "Kind regards,\n" + $scope.yourName;
 `string` is the variable which holds the text. Other than we first line, we can see it is formed of :
 
 ```
-string += ...... ;
+string += something + somethingElse + somethingElseElse + ... ;
 ```
 
-This adds stuff on to the end of `string`
+This adds stuff on to the end of `string`. The stuff you can add are:
+
+- strings, which look like `"O hey there! I'm a string.\n"` (note that `\n` ia a new line character)
+- the different variables we have from the form:
+  - $scope.yourName
+  - $scope.yourPos
+  - $scope.company
+  - $scope.theirName
