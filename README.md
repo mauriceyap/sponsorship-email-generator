@@ -22,6 +22,7 @@ A **very** simple-to-use tool for your society to use for writing emails to appr
    **Help! I've never coded anything before!** Install <a href="http://atom.io">Atom</a>, or if you're really, really, really lazy, Windows: Notepad, Mac: TextEdit.
 
    - Lines 8 and 18, change `MySociety` to whatever.
+   - Line 91, change MySociety to whatever.
    - Have a read of the comment on line 52. If you're interested, also read line 23 in `js/generator.js`
    - Save it and refresh your web browser. Title has changed. Magic.
 
