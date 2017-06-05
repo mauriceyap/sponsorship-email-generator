@@ -10,7 +10,7 @@ A **very** simple-to-use tool for your society to use for writing emails to appr
 **Even a UCL student can follow this**
 1. Copy these files onto your computer.
 
-  **What's Git? Isn't that a rude word?** Click on the green *Clone or download* above and download ZIP.
+    **What's Git? Isn't that a rude word?** Click on the green *Clone or download* above and download ZIP.
 
 2. Open up `index.html`. See a webpage? Have a play around to see what it actually does:
   - Fill in stuff on the left of the page and see what happens. Change that stuff and see what changes.
