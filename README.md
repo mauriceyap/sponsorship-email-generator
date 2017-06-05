@@ -63,7 +63,7 @@ This adds stuff on to the end of `string`. The stuff you can add are:
 
 - strings, which look like `"O hey there! I'm a string.\n"` (note that `\n` ia a new line character)
 - the different variables we have from the form:
-  - $scope.yourName
-  - $scope.yourPos
-  - $scope.company
-  - $scope.theirName
+  - `$scope.yourName`
+  - `$scope.yourPos`
+  - `$scope.company`
+  - `$scope.theirName`
