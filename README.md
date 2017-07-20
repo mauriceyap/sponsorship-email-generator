@@ -1,5 +1,7 @@
 # Society Sponsorship Email generator
 
+**[A preview](http://htmlpreview.github.io/?https://github.com/mauriceyap/sponsorship-email-generator/master/index.html)**
+
 A **very** simple-to-use tool for your society to use for writing emails to approach companies for sponorship. Use it to generate emails, and speed up the rate of emails sent!
 
 **Pro tips:**
